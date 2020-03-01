@@ -12,7 +12,7 @@ global.request = require("request")
     password: cfg.davpass
   }
 )
-let blacklist=["548899664544399383","588011221677113354"]
+
 global.makeid = function makeid(length) {
   var result = '';
   var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -41,7 +41,7 @@ mongo.connect((err,dbhost)=>{
 
 })
 global.Discord = require("discord.js")
-const ytdl = require('ytdl-core');
+
 
 const client = new Discord.Client({ ws: { properties: { $os: 'android', $browser: 'mobile', $device: 'mobile' } } })
 if(process.env.DEBUG){
@@ -65,17 +65,7 @@ client.on("ready", () => {
 
 })
 function processMessage(message) {
-  if(message.attachments.first()){
-    if(message.author.id==client.user.id){return}
-    //console.log(message.attachments)
-    let attachments=[]
-    message.attachments.array().forEach(attachment=>{
-      if(!attachment.width){return}
-      attachments.push(attachment.url)
-    })
-    if(attachments.length<1){return}
-    client.channels.get("678308084661092365").send({files:attachments})
-  }
+
 if(message.author.bot||!message.guild){return}
 db.collection("prefixes").findOne({guild:message.guild.id},(err,doc)=>{
   if(doc==null){
