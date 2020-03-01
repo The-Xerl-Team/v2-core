@@ -1,0 +1,7 @@
+{
+"davhost":"https://webdav.yandex.ru",
+"davuser":"xerl@l.co.ua",
+"davpass":"your password",
+"mongourl":"mongodb://username:password@host:27017/",
+"defaultprefix":"$"
+}
